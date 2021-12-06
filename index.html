@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Hello Forwarder!</title>
+  </head>
+  <body>
+    <h1>Hello Forwarder!</h1>
+    <div>We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.</div>
+    <h1>将<u>http://127.0.0.1:80/</u>绑定到以下地址：</h1>
+    <input type="text" id="serverInput" placeholder="服务器地址"/>
+    <h5>如需共享，记得设置系统防火墙放行规则</h5>
+  </body>
+  <script src="./hello.js"></script>
+  </html>
