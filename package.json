@@ -1,19 +1,54 @@
 {
-    "name": "node-forwarder",
-    "version": "1.0.0",
-    "description": "Hello intranet!",
-    "main": "main.js",
-    "author": "Fred Z",
-    "license": "MIT",
-    "scripts": {
-        "start": "electron ."
-    },
-    "devDependencies": {
-        "electron": "^16.0.4"
-    },
-    "dependencies": {
-        "express": "^4.17.1",
-        "express-form-data": "^2.0.17",
-        "http-proxy-middleware": "^2.0.1"
+  "name": "node-forwarder",
+  "version": "1.0.0",
+  "description": "Hello intranet!",
+  "main": "main.js",
+  "author": "Fred Z",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "electron": "^16.0.4"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "express": "^4.17.1",
+    "express-form-data": "^2.0.17",
+    "http-proxy-middleware": "^2.0.1"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "node_forwarder"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
     }
+  }
 }

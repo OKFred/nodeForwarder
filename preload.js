@@ -36,7 +36,7 @@ function env(){
     }catch(e){
       return console.log("请输入正确的URL地址");
     };
-    app.use('*', createProxyMiddleware({ target: url, changeOrigin: false }));
+    app.use('*', createProxyMiddleware({ target: url, changeOrigin: true }));
     app.listen(PORT, ()=> console.log(`web服务已启用，端口 [${PORT}]`));
     e.target.setAttribute("disabled","");
   })
