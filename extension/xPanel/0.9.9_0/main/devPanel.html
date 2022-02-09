@@ -1,0 +1,42 @@
+<meta charset="utf-8">
+<div class='container-fluid'>
+<h5>Welcome to xPanel</h5>
+<div class='row' id='row1'>	
+<div class='col-md-6' id='column1A'>
+	<br>
+	<select id='SelectMethod' name='SelectMethod' class='form-control-sm' required>
+	<option value='POST'>POST</option>
+	<option value='GET'>GET</option>
+	</select>
+	<select id='DataType' name='DataType' class='form-control-sm' required>
+	<option value='Form Data'>form-data</option>
+	<option value='json'>json</option>
+	<option value='x-www-form-urlencoded'>x-www-form-urlencoded</option>
+	</select>
+	<button id='Send' class="btn btn-outline-success" type="submit">Send</button>
+	<br>
+	<div class='form-check form-check-inline form-switch'>
+	<label for='Redirect' class='form-check-label'>Redirect</label>
+	<input class='form-check-input' id='Redirect' type='checkbox' checked />
+	</div>
+	<div class='form-check form-check-inline form-switch'>
+	<label for='Credentials' class='form-check-label'>Cookies</label>
+	<input class='form-check-input' id='Credentials' type='checkbox' checked />
+	</div>
+	<div class='form-check form-check-inline form-switch'>
+	<label for='AutoClear' class='form-check-label'>Console Clear</label>
+	<input class='form-check-input' id='AutoClear' type='checkbox' />
+	</div>
+	<br><input class='form-control' type='text' id='InputURL' placeholder='URL' required />
+	<textarea class='form-control' type='text' id='TextHeaders' placeholder='Headers'rows='1' cols='118'></textarea>
+	<textarea class='form-control' type='text' id='TextBody' placeholder='Payload' rows='3' cols='118'></textarea>
+</div>
+<div class='col-md-6' id='column1B'>
+	<b id='QueryInfo' style='color: royalblue; font-size: 13px; font-family: sans-serif;'>Result:</b>
+	<div class='form-control' style='font-size: 14px;'id='RequestResult' placeholder='Response' rows='11' cols='111'></div>
+</div>
+</div>
+</div>
+<script src='../base/network.js'></script>
+<script src='../main/devPanel.js'></script>
+<link rel="stylesheet" href='../base/bootstrap.min.css' />

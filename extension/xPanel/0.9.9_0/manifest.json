@@ -1,0 +1,36 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "manifest_version": 2,
+    "name": "xPanel",
+    "version": "1.0.0",
+    "description": "__MSG_pluginDesc__",
+	"default_locale": "zh_CN",
+	"author": "HiFred",
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>"
+    ],
+    "browser_action": {
+        "default_icon": "/img/carrot.png",
+        "default_title": "__MSG_helloWorld__",
+        "default_popup": "/main/popup.html",
+        "badge": "badge"
+    },
+    "homepage_url": "https://github.com/OKFred",
+    "options_ui": {
+        "page": "/main/option.html",
+        "chrome_style": true
+    },
+    "icons": {
+        "48": "img/carrot.png"
+    },
+    "web_accessible_resources": [],
+    "background": {
+        "scripts": [
+            "/main/bg.js"
+        ]
+    },
+    "devtools_page": "/main/dev.html"
+}
