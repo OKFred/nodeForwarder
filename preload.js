@@ -12,27 +12,26 @@ window.addEventListener('DOMContentLoaded', environmentSetting);
 var app=express();
 var expressServer;
 var defaultSetting={
-	targetServer:"http://127.0.0.1:80",
+	oldServer:"http://127.0.0.1:80",
 };
 var users={
-	targetServer:"",
+	oldServer:"",
 	newServer:'',
 };
 
 function environmentSetting(){
-document.getElementById("inputTargetServer").placeholder=defaultSetting.targetServer;
-document.getElementById("inputTargetServer").addEventListener("change",(e)=>{
-	serverStop();
-	let {status, result}=urlMapping(e);
-	if (!status){
-		document.getElementById("inputTargetServer").placeholder=defaultSetting.targetServer;
+document.getElementById("inputOldServer").placeholder='80';
+document.getElementById("inputOldServer").addEventListener("change",(e)=>{
+	let result=e.target.value.trim();
+	if (!result ||isNaN(Number(result))){
+		users.oldServer='';
+		document.getElementById("inputOldServer").placeholder='80'
 		return;
 	};
-	users.targetServer=result;
-	document.getElementById("inputTargetServer").value=result;
+	users.oldServer='http://127.0.0.1:'+result;
+	document.getElementById("inputOldServer").value=result;
 });
 	document.getElementById("inputNewServer").addEventListener("change",(e)=>{
-		serverStop();
 		let {status, result}=urlMapping(e);
 		if (!status){
 			document.getElementById("inputNewServer").placeholder='请填写';
@@ -48,32 +47,31 @@ document.getElementById("inputTargetServer").addEventListener("change",(e)=>{
 			return;
 		};
 		(e.target.checked)?serverStart():serverStop()&&location.reload();
-		document.getElementById("inputConfirm").innerText="OK✔";
-		setTimeout(()=>{document.getElementById("inputConfirm").innerText="切换";})
+		document.getElementsByTagName("label")[0].innerText="OK✔";
+		setTimeout(()=>{document.getElementsByTagName("label")[0].innerText="切换";},1500)
 	});
 	electronInfo();
 };
 
 function serverStart(){
 	let options = {
-		target: users.targetServer||defaultSetting.targetServer, // target host
+		target: users.newServer, // target host
 		changeOrigin: true, // needed for virtual hosted sites
 		ws: true, // proxy websockets
 		/* pathRewrite: {
 			'^/api/old-path': '/api/new-path', // rewrite path
 			'^/api/remove/path': '/path', // remove base path
 		}, */
-		router: {
-			// when request.headers.host == 'dev.localhost:3000',
-			// override target 'http://www.example.org' to 'http://localhost:8000'
-			[users.targetServer?new URL(users.targetServer).host:new URL(defaultSetting.targetServer).host]: users.newServer,
-		}, 
 	};
 	let exampleProxy = createProxyMiddleware(options);
 	app.use('*', exampleProxy);
-	expressServer=app.listen(80, ()=> {
-		console.log(`web服务已启用，[${(users.targetServer)?users.targetServer:defaultSetting.targetServer}] 将转发到👉${users.newServer}`);
+	let oldServer=(users.oldServer)?users.oldServer:defaultSetting.oldServer;
+	let oldPort=new URL(oldServer).port||80;
+	expressServer=app.listen(oldPort, ()=> {
+		console.log(`web服务已启用，[${oldServer}] 将转发到👉${users.newServer}`);
 	});
+	document.getElementById("inputOldServer").setAttribute("disabled","");
+	document.getElementById("inputNewServer").setAttribute("disabled","");
 };
 
 function serverStop(){
