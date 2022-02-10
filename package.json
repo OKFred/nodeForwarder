@@ -1,6 +1,6 @@
 {
   "name": "node-forwarder",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Hello intranet!",
   "main": "main.js",
   "author": "Fred Z",

@@ -22,7 +22,6 @@ var users={
 function environmentSetting(){
 document.getElementById("inputTargetServer").placeholder=defaultSetting.targetServer;
 document.getElementById("inputTargetServer").addEventListener("change",(e)=>{
-	serverStop();
 	let {status, result}=urlMapping(e);
 	if (!status){
 		document.getElementById("inputTargetServer").placeholder=defaultSetting.targetServer;
@@ -32,7 +31,6 @@ document.getElementById("inputTargetServer").addEventListener("change",(e)=>{
 	document.getElementById("inputTargetServer").value=result;
 });
 	document.getElementById("inputNewServer").addEventListener("change",(e)=>{
-		serverStop();
 		let {status, result}=urlMapping(e);
 		if (!status){
 			document.getElementById("inputNewServer").placeholder='请填写';
@@ -48,8 +46,8 @@ document.getElementById("inputTargetServer").addEventListener("change",(e)=>{
 			return;
 		};
 		(e.target.checked)?serverStart():serverStop()&&location.reload();
-		document.getElementById("inputConfirm").innerText="OK✔";
-		setTimeout(()=>{document.getElementById("inputConfirm").innerText="切换";})
+		document.getElementsByTagName("label")[0].innerText="OK✔";
+		setTimeout(()=>{document.getElementsByTagName("label")[0].innerText="切换";})
 	});
 	electronInfo();
 };
