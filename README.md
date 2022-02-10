@@ -8,4 +8,4 @@
 输入你需要反代的地址，然后回车即可启动。一键转发你的请求。
 
 示例：
-![image](https://user-images.githubusercontent.com/67962064/144949915-4168c7d1-185b-4dda-a52c-2a18f4e28e00.png)
+![image](https://user-images.githubusercontent.com/67962064/153331597-22647076-2643-4571-be3a-545c318952ae.png)
