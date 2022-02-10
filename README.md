@@ -9,3 +9,7 @@
 
 示例：
 ![image](https://user-images.githubusercontent.com/67962064/153331597-22647076-2643-4571-be3a-545c318952ae.png)
+
+##自带调试
+与此同时，你还可以在DevTools 的 xPanel里快速调试；
+![image](https://user-images.githubusercontent.com/67962064/153333408-3e205d3b-9202-49e2-a8da-a8dfc5851b80.png)
